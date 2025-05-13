@@ -15,22 +15,20 @@ let colour = {r: 0, g: 0, b: 0};
 function setup() {
   createCanvas(300, 300);
 
-  startBtn = createButton("START");
-  startBtn.position(40, 80);
-  startBtn.style("background", "#6AA84F");
-  startBtn.style("border-radius", "6px");
-  startBtn.style("height", "30px");
-  startBtn.style("width", "100px");
+  startBtn = button("START", 40, 80, "#6AA84F", changeLetter);
+  stopBtn = button("STOP", 160, 80, "#CC0000", stopLetter);
 
-  stopBtn = createButton("STOP");
-  stopBtn.position(160, 80);
-  stopBtn.style("background", "#CC0000");
-  stopBtn.style("border-radius", "6px");
-  stopBtn.style("height", "30px");
-  stopBtn.style("width", "100px");
+}
 
-  startBtn.mousePressed(changeLetter);
-  stopBtn.mousePressed(stopLetter);
+function button(text, x, y, bg, f) {
+  let btn = createButton(text);
+  btn.position(x, y);
+  btn.style("background", bg);
+  btn.style("border-radius", "6px");
+  btn.style("height", "30px");
+  btn.style("width", "100px");
+  btn.mousePressed(f);
+  return btn;
 }
 
 function changeLetter() {
